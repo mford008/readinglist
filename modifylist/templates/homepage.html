@@ -1,2 +1,9 @@
-<h1>Testing</h1>
-<h2>{{ message }}</h2>
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h1>Bookworm</h1>
+  <p>Your reading list digitized</p>
+  <button><a href="{% url "signup" %}">Signup</a></button>
+  <button><a href="{% url "login" %}">Login</a></button>
+</div>
+{% endblock content %}

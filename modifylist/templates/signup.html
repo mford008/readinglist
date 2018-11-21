@@ -1,9 +1,13 @@
-<h1>{{ pagetitle }}</h1>
-<h2>Signup</h2>
-<form class="" action="." method="POST">
-    <div class="card-body">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-success btn-lg">Register!</button>
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Signup</h2>
+  <form class="" action="." method="POST">
+    <div>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-success btn-large">Register!</button>
     </div>
-</form>
+  </form>
+</div>
+{% endblock content %}
