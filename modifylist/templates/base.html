@@ -4,26 +4,25 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Bookworm</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Latest compiled and minified Bootstrap 4 beta CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/litera/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css" />
+    <link rel="stylesheet" type="text/css" href="../static/styles.css" />
   </head>
   <body>
     <nav class="navbar navbar-expand-md">
         <a class="navbar-brand" href="/">Bookworm</a>
-
+        {% if user.is_authenticated %}
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="Navbar navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="btn btn-primary btn-lg" href="{% url "logout" %}">Logout</a>
+                    <a class="NavButton btn btn-primary btn-lg" href="{% url "logout" %}">Logout</a>
                 </li>
-                <li class="nav-item">
-                    <a class="btn btn-primary btn-lg" href="{% url "dashboard" %}">{{ user }}</a>
+                <li class="NavPara nav-item">
+                    <p>Welcome back, {{ user }}!</a>
                 </li>
             </ul>
         </div>
-        
+        {% endif %}
         </nav>
     {% block content %}
     {% endblock content %}

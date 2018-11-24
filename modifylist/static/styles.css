@@ -1,0 +1,17 @@
+:root {
+  --background1: #92DCE5;
+  --background-and-highlight-text: #EEE5E9;
+  --text-only: #5B5B5B;
+  --accent: #D64933;
+}
+
+/*Landing*/
+.Container {
+  background-color: var(--background1);
+}
+.Title {
+  color: var(--background-and-highlight-text);
+}
+.Heart {
+  color: var(--accent);
+}
