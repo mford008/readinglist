@@ -1,13 +1,11 @@
 import os
-# import DJANGO_SECRET_KEY
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
-# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
-SECRET_KEY = 'azswt6sz2cb6^3t-93rg!2cewl&77h(zp%q8)yt@sheql1k#+u'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'azswt6sz2cb6^3t-93rg!2cewl&77h(zp%q8)yt@sheql1k#+u')
 
 DEBUG = True
 

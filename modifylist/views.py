@@ -3,6 +3,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate
+from django.contrib import auth
 # from django.contrib.auth import views as auth_views
 # import requests
 
@@ -59,7 +60,7 @@ def login(request):
                 password=form.cleaned_data['password']
             )
             if user is not None:
-                # authenticate.login(request, user)
+                auth.login(request, user)
                 return redirect('/dashboard')
     else:
         form = LoginForm()
@@ -70,8 +71,12 @@ def login(request):
     return render(request, 'login.html', context)
 
 
-def logout(request):
+def logout_view(request):
+    context = {
+        'message': 'logged out'
+    }
     logout(request)
+    return render(request, 'homepage.html', context)
 
 
 def dashboard(request):
