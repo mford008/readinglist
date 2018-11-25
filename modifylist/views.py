@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate
 from django.contrib import auth
-# from django.contrib.auth import views as auth_views
-# import requests
-
+import requests
+from django.conf import settings
+API_KEY = str(settings.GOOGLE_BOOKS_API_KEY)
 
 class NewUserForm(forms.Form):
     username = forms.CharField(max_length=100)
@@ -80,6 +80,10 @@ def logout_view(request):
 
 
 def dashboard(request):
+    apiKey = settings.GOOGLE_BOOKS_API_KEY
+    response = requests.get(f'https://www.googleapis.com/books/v1/volumes?q=Hamlet&key={apiKey}')
+    results = response.json()
+    print(results)
     # 1. display books from SQLite3 db
     # 2. display a search bar
     # 3. when submit is hit for search bar, make api call to google books
@@ -95,6 +99,6 @@ def dashboard(request):
     #         data = response.json()
     #         print(data)
     context = {
-        'pagetitle': 'dashboard'
+        'pagetitle': 'dashboard',
     }
     return render(request, 'dashboard.html', context)
