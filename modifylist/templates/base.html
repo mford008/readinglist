@@ -4,6 +4,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Bookworm</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/litera/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css" />
     <link rel="stylesheet" type="text/css" href="../static/styles.css" />
@@ -16,6 +17,9 @@
             <ul class="Navbar navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="NavButton btn btn-primary btn-lg" href="{% url "logout" %}">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="NavButton btn btn-primary btn-lg" href="{% url "dashboard" %}">Dashboard</a>
                 </li>
                 <li class="NavPara nav-item">
                     <p>Welcome back, {{ user }}!</a>

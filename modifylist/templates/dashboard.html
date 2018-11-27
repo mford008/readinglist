@@ -5,14 +5,26 @@
   <div class='list-container'>
     <h2>My books</h2>
     <div class='book-list'>
-        test
+        {% for book in books %}
+        <div>
+          {{ book.volumeInfo.title }}, {{ book.volumeInfo.authors.0 }}
+          <button>New</button>
+          <button>In progress</button>
+          <button>Finished</button>
+        </div>
+        {% endfor %}
     </div>
   </div>
   <div class='add-container'>
     <h2>Add a new book</h2>
     <div class='add-list'>
-      <input placeholder="Search for a title" />
-      <button onClick="click()">Submit</button>
+      <form action="." method="GET">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button onClick="click()">Submit</button>
+      </form>
+      <div class="search-results">
+      </div>
     </div>
   </div>
 </div>

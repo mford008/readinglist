@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate
 from django.contrib import auth
 import requests
 from django.conf import settings
+import pprint
 API_KEY = str(settings.GOOGLE_BOOKS_API_KEY)
 
 class NewUserForm(forms.Form):
@@ -17,9 +18,9 @@ class LoginForm(forms.Form):
     username = forms.CharField(max_length=100)
     password = forms.CharField(widget=forms.PasswordInput)
 
-#
-# class BookSearchForm(forms.Form):
-#     text = forms.CharField(widget=forms.Input)
+
+class BookForm(forms.Form):
+    title = forms.CharField(max_length=100)
 
 
 def homepage(request):
@@ -34,6 +35,7 @@ def signup(request):
     if request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
+            # print('hello')
             user = User.objects.create_user(
                 username=form.cleaned_data['username'],
                 password=form.cleaned_data['password'],
@@ -80,10 +82,24 @@ def logout_view(request):
 
 
 def dashboard(request):
-    apiKey = settings.GOOGLE_BOOKS_API_KEY
-    response = requests.get(f'https://www.googleapis.com/books/v1/volumes?q=Hamlet&key={apiKey}')
-    results = response.json()
-    print(results)
+    if 'title' in request.GET:
+        form = BookForm(request.GET)
+        if form.is_valid():
+            searchterm = form.cleaned_data['title']
+            apiKey = settings.GOOGLE_BOOKS_API_KEY
+            response = requests.get(f'https://www.googleapis.com/books/v1/volumes?q={searchterm}&key={apiKey}')
+            results = response.json()
+            print('worked!')
+            pprint.pprint(results['items'][0]['volumeInfo']['authors'][0])
+            pprint.pprint(results['items'][0]['volumeInfo']['title'])
+            books = results['items']
+            # pprint.pprint(results.items(0))
+            # pprint.pprint(results[items])
+        else:
+            print('error')
+    else:
+        form = BookForm()
+        results = ''
     # 1. display books from SQLite3 db
     # 2. display a search bar
     # 3. when submit is hit for search bar, make api call to google books
@@ -100,5 +116,7 @@ def dashboard(request):
     #         print(data)
     context = {
         'pagetitle': 'dashboard',
+        'form': form,
+        'books': books,
     }
     return render(request, 'dashboard.html', context)
