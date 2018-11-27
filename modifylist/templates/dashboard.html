@@ -7,8 +7,7 @@
     <div class='book-list'>
         {% for book in books %}
         <div>
-          {{ book.title }}, {{ book.authors }}
-          <button><a href={}>Add to List</button>
+          {{ book.title }}
         </div>
         {% endfor %}
     </div>
@@ -16,7 +15,7 @@
   <div class='add-container'>
     <h2>Add a new book</h2>
     <div class='add-list'>
-      <form action="." method="GET">
+      <form action="." method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button onClick="click()">Submit</button>

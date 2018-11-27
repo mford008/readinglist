@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth import logout
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 from django.contrib import auth
+
 from .models import Book
 # import requests
 from django.conf import settings
@@ -92,7 +92,12 @@ def dashboard(request):
                 title=form.cleaned_data['title'],
                 author=form.cleaned_data['author'],
             )
+            # print('insert complete')
+            print(book.title)
+            print(book.author)
             return redirect('/dashboard')
+        else:
+            print('error')
     else:
         form = BookForm()
     # if 'title' in request.GET:
