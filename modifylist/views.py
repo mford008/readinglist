@@ -4,10 +4,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate
 from django.contrib import auth
-import requests
+from .models import Book
+# import requests
 from django.conf import settings
-import pprint
+# import pprint
 API_KEY = str(settings.GOOGLE_BOOKS_API_KEY)
+
 
 class NewUserForm(forms.Form):
     username = forms.CharField(max_length=100)
@@ -21,6 +23,7 @@ class LoginForm(forms.Form):
 
 class BookForm(forms.Form):
     title = forms.CharField(max_length=100)
+    author = forms.CharField(max_length=100)
 
 
 def homepage(request):
@@ -82,40 +85,36 @@ def logout_view(request):
 
 
 def dashboard(request):
-    if 'title' in request.GET:
-        form = BookForm(request.GET)
+    if request.method == 'POST':
+        form = BookForm(request.POST)
         if form.is_valid():
-            searchterm = form.cleaned_data['title']
-            apiKey = settings.GOOGLE_BOOKS_API_KEY
-            response = requests.get(f'https://www.googleapis.com/books/v1/volumes?q={searchterm}&key={apiKey}')
-            results = response.json()
-            print('worked!')
-            pprint.pprint(results['items'][0]['volumeInfo']['authors'][0])
-            pprint.pprint(results['items'][0]['volumeInfo']['title'])
-            books = results['items']
-            # pprint.pprint(results.items(0))
-            # pprint.pprint(results[items])
-        else:
-            print('error')
+            book = Book.objects.create(
+                title=form.cleaned_data['title'],
+                author=form.cleaned_data['author'],
+            )
+            return redirect('/dashboard')
     else:
         form = BookForm()
-        results = ''
-    # 1. display books from SQLite3 db
-    # 2. display a search bar
-    # 3. when submit is hit for search bar, make api call to google books
-    # 4. return data from google books api
-    # 5. allow user to select books from returned data, add to their book list
-    # 6. allow user to delete books from list
-    # 7. allow user to update status of book (new, in progress, or finished)
-    # if request.method == 'GET':
-    #     form = BookSearchForm(request.GET)
+    # if 'title' in request.GET:
+    #     form = BookForm(request.GET)
     #     if form.is_valid():
-    #         # title = form.cleaned_data['title']
-    #         response = requests.get('https://www.googleapis.com/books/v1/volumes?q=hamlet')
-    #         data = response.json()
-    #         print(data)
+    #         searchterm = form.cleaned_data['title']
+    #         apiKey = settings.GOOGLE_BOOKS_API_KEY
+    #         response = requests.get(f'https://www.googleapis.com/books/v1/volumes?q={searchterm}&key={apiKey}')
+    #         results = response.json()
+    #         print('worked!')
+    #         pprint.pprint(results['items'][0]['volumeInfo']['authors'][0])
+    #         pprint.pprint(results['items'][0]['volumeInfo']['title'])
+    #         books = results['items']
+    #         # pprint.pprint(results.items(0))
+    #         # pprint.pprint(results[items])
+    #     else:
+    #         print('error')
+    # else:
+    #     form = BookForm()
+    #     results = ''
+    books = Book.objects.order_by('-added')
     context = {
-        'pagetitle': 'dashboard',
         'form': form,
         'books': books,
     }

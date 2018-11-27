@@ -7,10 +7,8 @@
     <div class='book-list'>
         {% for book in books %}
         <div>
-          {{ book.volumeInfo.title }}, {{ book.volumeInfo.authors.0 }}
-          <button>New</button>
-          <button>In progress</button>
-          <button>Finished</button>
+          {{ book.title }}, {{ book.authors }}
+          <button><a href={}>Add to List</button>
         </div>
         {% endfor %}
     </div>
