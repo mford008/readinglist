@@ -1,9 +1,13 @@
 {% extends "base-landing.html" %}
 {% block content %}
 <div class="Container">
-  <h1 class="Title">Booklove</h1>
-  <p class="Subtitle">Your reading list digitized. <span class="Heart">&hearts;</span></p>
-  <button class="Button"><a href="{% url "signup" %}">Signup</a></button>
-  <button class="Button"><a href="{% url "login" %}">Login</a></button>
+  <div class="TitlesContainer">
+    <h1 class="Title">BookStore<span class="Heart">&hearts;</span></h1>
+    <p class="Subtitle">Your reading list digitized.</p>
+  </div>
+  <div class="ButtonContainer">
+    <button class="Button"><a class="ButtonText" href="{% url "signup" %}">Signup</a></button>
+    <button class="Button"><a class="ButtonText" href="{% url "login" %}">Login</a></button>
+  </div>
 </div>
 {% endblock content %}

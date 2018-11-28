@@ -5,13 +5,30 @@
   --accent: #D64933;
 }
 
-/*Landing*/
-.Container {
+body {
+  background-color: var(--background-and-highlight-text);
+}
+
+/*Navbar*/
+.Navbar {
   background-color: var(--background1);
 }
-.Title {
+.NavbarBrand {
   color: var(--background-and-highlight-text);
+  font-weight: bold;
 }
-.Heart {
+.NavbarBrand:hover {
+  color: var(--accent);
+}
+.Button {
+  background-color: var(--accent);
+  border-radius: 12px;
+  border-style: none;
+  padding: 5px;
+}
+.ButtonText {
+  color: var(--text-only);
+}
+.ButtonText:hover {
   color: var(--accent);
 }

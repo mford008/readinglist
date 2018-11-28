@@ -2,23 +2,24 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Bookworm</title>
+    <title>BookStore</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/litera/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css" />
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../static/styles.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand" href="/">Bookworm</a>
+    <nav class="Navbar navbar navbar-expand-md">
+        <a class="NavbarBrand navbar-brand" href="/">BookStore</a>
         {% if user.is_authenticated %}
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="Navbar navbar-nav mr-auto">
-                <li class="nav-item">
+            <ul class="NavbarList navbar-nav mr-auto">
+                <li class="NavItem nav-item">
                     <a class="NavButton btn btn-primary btn-lg" href="{% url "logout" %}">Logout</a>
                 </li>
-                <li class="nav-item">
+                <li class="NavItem nav-item">
                     <a class="NavButton btn btn-primary btn-lg" href="{% url "dashboard" %}">Dashboard</a>
                 </li>
                 <li class="NavPara nav-item">

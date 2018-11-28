@@ -1,0 +1,49 @@
+:root {
+  --background1: #92DCE5;
+  --background-and-highlight-text: #EEE5E9;
+  --text-only: #5B5B5B;
+  --accent: #D64933;
+}
+
+/*Landing*/
+body {
+  background-color: var(--background1);
+}
+.Container {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: auto 50% auto;
+}
+.TitlesContainer {
+  text-align: center;
+  grid-row: 2;
+  grid-column: 2;
+}
+.Title {
+  font-size: 6em;
+  color: var(--background-and-highlight-text);
+}
+.Subtitle {
+  color: var(--text-only);
+  font-family: 'Bitter', serif;
+}
+.Heart {
+  color: var(--accent);
+}
+.ButtonContainer {
+  text-align: center;
+  grid-row: 3;
+  grid-column: 2;
+}
+.Button {
+  background-color: var(--background-and-highlight-text);
+  border-radius: 12px;
+  border-style: none;
+  padding: 5px;
+}
+.ButtonText {
+  color: var(--accent);
+}
+.ButtonText:hover {
+  color: var(--text-only);
+}
