@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css" />
     <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../static/styles-dashboard.css" />
   </head>
   <body>
     <nav class="Navbar navbar navbar-expand-md">
@@ -17,13 +18,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="NavbarList navbar-nav mr-auto">
                 <li class="NavItem nav-item">
-                    <a class="NavButton btn btn-primary btn-lg" href="{% url "logout" %}">Logout</a>
+                    <a class="NavButton btn" href="{% url "logout" %}">Logout</a>
                 </li>
                 <li class="NavItem nav-item">
-                    <a class="NavButton btn btn-primary btn-lg" href="{% url "dashboard" %}">Dashboard</a>
+                    <a class="NavButton btn" href="{% url "dashboard" %}">Dashboard</a>
                 </li>
                 <li class="NavPara nav-item">
-                    <p>Welcome back, {{ user }}!</a>
+                    <a class="NavButton btn">{{ user }}</a>
                 </li>
             </ul>
         </div>

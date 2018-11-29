@@ -1,6 +1,6 @@
 :root {
   --background1: #92DCE5;
-  --background-and-highlight-text: #EEE5E9;
+  --background-and-highlight-text: #FFFFFF;
   --text-only: #5B5B5B;
   --accent: #D64933;
 }
@@ -8,7 +8,11 @@
 body {
   background-color: var(--background-and-highlight-text);
 }
-
+.Container {
+  display: grid;
+  grid-template-rows: 1fr 1fr auto;
+  grid-template-columns: 50px auto 50px;
+}
 /*Navbar*/
 .Navbar {
   background-color: var(--background1);
@@ -20,6 +24,11 @@ body {
 .NavbarBrand:hover {
   color: var(--accent);
 }
+.NavbarList {
+  display: flex;
+  justify-content: flex-end;
+}
+/*Signup*/
 .Button {
   background-color: var(--accent);
   border-radius: 12px;
@@ -27,8 +36,32 @@ body {
   padding: 5px;
 }
 .ButtonText {
-  color: var(--text-only);
+  color: var(--background-and-highlight-text);
 }
 .ButtonText:hover {
   color: var(--accent);
+}
+.Button:hover {
+  background-color: var(--background-and-highlight-text);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+.PageHeader {
+  text-align: center;
+  grid-row: 2;
+  grid-column: 2;
+  color: var(--text-only)
+}
+.Form {
+  text-align: center;
+  grid-row: 3;
+  grid-column: 2;
+  padding-top: 20px;
+}
+label {
+  font-family: 'Bitter', serif;
+}
+/*Login*/
+.SignupLink {
+  font-family: 'Bitter', serif;
 }
