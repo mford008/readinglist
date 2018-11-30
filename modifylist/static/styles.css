@@ -65,5 +65,6 @@ label {
 }
 /*Login*/
 .SignupLink, .LoginLink {
+  padding-top: 20px;
   font-family: 'Bitter', serif;
 }

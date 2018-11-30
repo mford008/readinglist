@@ -8,6 +8,7 @@
       {% csrf_token %}
       {{ form.as_p }}
       <button class="Button btn btn-large"><span class=ButtonText>Register!</span></button>
+      <p class="LoginLink">Already a member? <a href="{% url "login" %}">Login!</a></p>
     </div>
   </form>
 </div>
