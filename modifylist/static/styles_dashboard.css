@@ -17,6 +17,7 @@ body {
 .PageHeader{
   grid-row: 1;
   grid-column: 2;
+  padding-top: 10px;
 }
 .ListContainer {
   grid-row: 2;
@@ -31,4 +32,27 @@ body {
 }
 .Button {
   color: var(--background-and-highlight-text);
+}
+.Book {
+  font-family: 'Bitter', serif;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+.Book:hover {
+  color: var(--accent);
+}
+.Button {
+  color: var(--background-and-highlight-text);
+  padding: none;
+}
+.Form {
+  text-align: left;
+}
+.TitleText {
+  font-weight: bold;
+}
+.NavbarButton {
+  display: flex;
+  justify-content: space-between;
 }

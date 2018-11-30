@@ -11,7 +11,7 @@
           {% if book.user == user_on_page %}
           <div class="Book">
             {{ book.title }}, {{ book.author }} {{ book.user }}
-            <button class="Button">Test button</button>
+            <button class="Button">x</button>
           </div>
           {% endif %}
         {% endfor %}
@@ -23,7 +23,7 @@
       <form class="Form" action="." method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="Button btn" onClick="click()">Submit</button>
+        <button class="Button btn">Submit</button>
       </form>
       <div class="SearchResults">
       </div>
