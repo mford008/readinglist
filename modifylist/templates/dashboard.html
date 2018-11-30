@@ -22,7 +22,7 @@
   <div class='AddContainer'>
     <div class='FormContainer'>
       <h3 class="SectionHeader">Add a new book:</h3>
-      <form class="Form" action="." method="POST">
+      <form class="Form" action="{{ request.get_full_path }}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button class="Button btn">Save</button>

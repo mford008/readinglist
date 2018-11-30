@@ -90,6 +90,7 @@ def logout_view(request):
 
 def dashboard(request, username):
     user = User.objects.get(username=username)
+    #import IPython; IPython.embed()
     if request.method == 'POST':
         form = BookForm(request.POST)
         if form.is_valid():
@@ -97,11 +98,10 @@ def dashboard(request, username):
             if book is not None:
                 book.user = request.user
                 book.save()
-            return redirect('/dashboard/' + user)
-        else:
-            print('error')
+                return redirect('dashboard', username=user.username)
     else:
         form = BookForm()
+
     books = Book.objects.order_by('-added')
     books_for_user = books.filter(user=user)
     context = {
