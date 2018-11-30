@@ -27,8 +27,6 @@ class BookForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = ['title', 'author']
-    # title = forms.CharField(max_length=100)
-    # author = forms.CharField(max_length=100)
 
 
 def homepage(request):
@@ -48,8 +46,9 @@ def signup(request):
                 email=form.cleaned_data['email'],
                 password=form.cleaned_data['password'],
             )
-            auth.login(request, user)
-            return redirect('/dashboard')
+            if user is not None:
+                auth.login(request, user)
+                return redirect('/dashboard/' + user.username)
     else:
         form = NewUserForm()
 
