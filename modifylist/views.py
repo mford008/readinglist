@@ -111,3 +111,10 @@ def dashboard(request, username):
         'user_on_page': user,
     }
     return render(request, 'dashboard.html', context)
+
+
+def account_settings(request):
+    context = {
+        'message': 'Account Settings'
+    }
+    return render(request, 'account_settings.html', context)
