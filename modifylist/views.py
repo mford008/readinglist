@@ -113,8 +113,8 @@ def dashboard(request, username):
     return render(request, 'dashboard.html', context)
 
 
-def account_settings(request):
-    context = {
-        'message': 'Account Settings'
-    }
-    return render(request, 'account_settings.html', context)
+def delete_book(request, book_id):
+    book = Book.objects.get(id=book_id)
+    book.delete()
+
+    return redirect(request.META.get('HTTP_REFERER', '/'))

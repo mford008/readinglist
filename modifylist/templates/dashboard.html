@@ -10,8 +10,10 @@
         {% for book in books %}
           {% if book.user == user_on_page %}
           <div class="Book">
-            {{ book.title }}, {{ book.author }} {{ book.user }}
-            <button class="Button">x</button>
+            <div class="BookInfo"><span class="TitleText">{{ book.title }},</span> {{ book.author }}</div>
+            <div class="BookButtons">
+              <button class="Button DeleteButton"><a href="/delete_book/{{ book.id }}">x</a></button>
+            </div>
           </div>
           {% endif %}
         {% endfor %}
@@ -23,7 +25,7 @@
       <form class="Form" action="." method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="Button btn">Submit</button>
+        <button class="Button btn">Save</button>
       </form>
       <div class="SearchResults">
       </div>
