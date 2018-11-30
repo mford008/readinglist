@@ -94,35 +94,14 @@ def dashboard(request, username):
         form = BookForm(request.POST)
         if form.is_valid():
             book = form.save(commit=False)
-            book.user = request.user
-            book.save()
-            # book = Book.objects.create(
-            #     title=form.cleaned_data['title'],
-            #     author=form.cleaned_data['author'],
-            # )
-            return redirect('/dashboard/' + user.username)
+            if book is not None:
+                book.user = request.user
+                book.save()
+            return redirect('/dashboard/' + user)
         else:
             print('error')
     else:
         form = BookForm()
-    # if 'title' in request.GET:
-    #     form = BookForm(request.GET)
-    #     if form.is_valid():
-    #         searchterm = form.cleaned_data['title']
-    #         apiKey = settings.GOOGLE_BOOKS_API_KEY
-    #         response = requests.get(f'https://www.googleapis.com/books/v1/volumes?q={searchterm}&key={apiKey}')
-    #         results = response.json()
-    #         print('worked!')
-    #         pprint.pprint(results['items'][0]['volumeInfo']['authors'][0])
-    #         pprint.pprint(results['items'][0]['volumeInfo']['title'])
-    #         books = results['items']
-    #         # pprint.pprint(results.items(0))
-    #         # pprint.pprint(results[items])
-    #     else:
-    #         print('error')
-    # else:
-    #     form = BookForm()
-    #     results = ''
     books = Book.objects.order_by('-added')
     books_for_user = books.filter(user=user)
     context = {
