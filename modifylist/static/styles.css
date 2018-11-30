@@ -10,7 +10,7 @@ body {
 }
 .Container {
   display: grid;
-  grid-template-rows: 1fr 1fr auto;
+  grid-template-rows: 1fr auto;
   grid-template-columns: 50px auto 50px;
 }
 /*Navbar*/

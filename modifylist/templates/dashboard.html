@@ -1,4 +1,6 @@
-{% extends "base.html" %}
+{% extends "base-dashboard.html" %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static styles_dashboard.css %}" />
 {% block content %}
 <div class="Container">
   <h2 class="PageHeader">Dashboard</h2>
@@ -6,9 +8,12 @@
     <h3 class="SectionHeader">My books:</h3>
     <div class='BookList'>
         {% for book in books %}
-        <div class="Book">
-          {{ book.title }}
-        </div>
+          {% if book.user == user_on_page %}
+          <div class="Book">
+            {{ book.title }}, {{ book.author }} {{ book.user }}
+            <button class="Button">Test button</button>
+          </div>
+          {% endif %}
         {% endfor %}
     </div>
   </div>

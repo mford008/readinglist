@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css" />
     <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../static/styles_dashboard.css" />
   </head>
   <body>
     <nav class="Navbar navbar navbar-expand-md">
@@ -21,7 +22,7 @@
                     <a class="NavButton btn" href="{% url "logout" %}">Logout</a>
                 </li>
                 <li class="NavItem nav-item">
-                    <a class="NavButton btn" href="{% url "dashboard" username=user.username%}">Dashboard</a>
+                    <a class="NavButton btn" href="{% url "dashboard" username=user.username %}">Dashboard</a>
                 </li>
                 <li class="NavPara nav-item">
                     <a class="NavButton btn">{{ user }}</a>
