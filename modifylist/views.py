@@ -38,6 +38,7 @@ def homepage(request):
 
 
 def signup(request):
+    logout(request)
     if request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
@@ -61,6 +62,7 @@ def signup(request):
 
 
 def login(request):
+    logout(request)
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -90,7 +92,6 @@ def logout_view(request):
 
 def dashboard(request, username):
     user = User.objects.get(username=username)
-    #import IPython; IPython.embed()
     if request.method == 'POST':
         form = BookForm(request.POST)
         if form.is_valid():
@@ -109,6 +110,7 @@ def dashboard(request, username):
         'books': books,
         'books_for_user': books_for_user,
         'user_on_page': user,
+        'request_user': request.user
     }
     return render(request, 'dashboard.html', context)
 

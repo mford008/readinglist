@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{% static styles_dashboard.css %}" />
 {% block content %}
 <div class="Container">
+  {% if user_on_page == request_user %}
   <h2 class="PageHeader">Dashboard</h2>
   <div class='ListContainer'>
     <h3 class="SectionHeader">My books:</h3>
@@ -31,5 +32,8 @@
       </div>
     </div>
   </div>
+  {% else %}
+  <p class="ErrorMessage">Oops! You're not logged in. <a href="{% url 'login' %}">Login</a> or <a href="{% url 'signup' %}">Signup.</a></p>
+  {% endif %}
 </div>
 {% endblock content %}
