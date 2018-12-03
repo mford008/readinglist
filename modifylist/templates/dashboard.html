@@ -13,7 +13,7 @@
           <div class="Book">
             <div class="BookInfo"><span class="TitleText">{{ book.title }},</span> {{ book.author }}</div>
             <div class="BookButtons">
-              <button class="Button DeleteButton"><a href="/delete_book/{{ book.id }}">x</a></button>
+              <button class="Button DeleteButton"><a class="DeleteLink" href="/delete_book/{{ book.id }}">x</a></button>
             </div>
           </div>
           {% endif %}

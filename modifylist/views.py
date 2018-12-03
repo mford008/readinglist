@@ -49,7 +49,7 @@ def signup(request):
             )
             if user is not None:
                 auth.login(request, user)
-                return redirect('/dashboard/' + user.username)
+                return redirect('dashboard', username=user.username)
     else:
         form = NewUserForm()
 
@@ -72,7 +72,7 @@ def login(request):
             )
             if user is not None:
                 auth.login(request, user)
-                return redirect('/dashboard/' + user.username)
+                return redirect('dashboard', username=user.username)
     else:
         form = LoginForm()
     context = {
