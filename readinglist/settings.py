@@ -8,7 +8,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'azswt6sz2cb6^3t-93rg!2cewl&77h(zp%q8)
 GOOGLE_BOOKS_API_KEY = os.environ.get('API_KEY')
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 
 # Application definition
