@@ -1,5 +1,6 @@
 import os
 import dj_database_url
+import psycopg2
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -9,7 +10,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'azswt6sz2cb6^3t-93rg!2cewl&77h(zp%q8)
 GOOGLE_BOOKS_API_KEY = os.environ.get('API_KEY')
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'yourdigitalbookstore.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'yourdigitalbookstore.herokuapp.com']
 
 
 # Application definition
@@ -68,6 +69,9 @@ DATABASES = {
 }
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
+
+DATABASE_URL = os.environ['DATABASE_URL']
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
