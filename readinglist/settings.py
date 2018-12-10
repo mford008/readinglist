@@ -9,7 +9,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = os.environ.get('SECRET_KEY', 'azswt6sz2cb6^3t-93rg!2cewl&77h(zp%q8)yt@sheql1k#+u')
 
 GOOGLE_BOOKS_API_KEY = os.environ.get('API_KEY')
-DEBUG = not bool(os.environ.get('SECRET_KEY'))
+
+# DEBUG = not bool(os.environ.get('SECRET_KEY'))
+DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'yourdigitalbookstore.herokuapp.com']
 
@@ -68,13 +70,13 @@ DATABASES = {
         'NAME': os.path.join('bookstore'),
     }
 }
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
-# db_from_env = dj_database_url.config()
-# DATABASES['default'].update(db_from_env)
-#
-# DATABASE_URL = os.environ['DATABASE_URL']
-# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+
+DATABASE_URL = os.environ['DATABASE_URL']
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
