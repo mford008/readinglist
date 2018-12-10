@@ -72,11 +72,11 @@ DATABASES = {
 }
 # django_heroku.settings(locals())
 
-# db_from_env = dj_database_url.config()
-# DATABASES['default'].update(db_from_env)
-#
-# DATABASE_URL = os.environ['DATABASE_URL']
-# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+
+DATABASE_URL = os.environ['DATABASE_URL']
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
