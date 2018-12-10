@@ -12,6 +12,7 @@
           {% if book.user == user_on_page %}
           <div class="Book">
             <div class="BookInfo"><span class="TitleText">{{ book.title }},</span> {{ book.author }}</div>
+            <div class="BookInfo"><span class="TitleText">{{ book.status }}</div>
             <div class="BookButtons">
               <button class="Button DeleteButton"><a class="DeleteLink" href="/delete_book/{{ book.id }}">x</a></button>
             </div>

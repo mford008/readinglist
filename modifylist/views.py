@@ -26,7 +26,7 @@ class LoginForm(forms.Form):
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ['title', 'author']
+        fields = ['title', 'author', 'status']
 
 
 def homepage(request):
