@@ -10,5 +10,6 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('dashboard/<username>', views.dashboard, name="dashboard"),
-    path('delete_book/<book_id>', views.delete_book, name="delete_book")
+    path('delete_book/<book_id>', views.delete_book, name="delete_book"),
+    path('edit_book/<book_id>', views.edit_book, name="edit_book"),
 ]

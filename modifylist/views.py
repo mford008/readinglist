@@ -29,6 +29,12 @@ class BookForm(forms.ModelForm):
         fields = ['title', 'author', 'status']
 
 
+class EditBookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = ['title', 'author', 'status']
+
+
 def homepage(request):
     context = {
         'message': 'BookStore'
@@ -120,3 +126,19 @@ def delete_book(request, book_id):
     book.delete()
 
     return redirect(request.META.get('HTTP_REFERER', '/'))
+
+
+def edit_book(request, book_id, username):
+    user = User.objects.get(username=username)
+    book = Book.objects.get(id=book_id)
+    if request.method == 'POST':
+        form = EditBookForm(request.POST, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard', username=username)
+    else:
+        form = EditBookForm(instance=book)
+    context = {
+        'form': form,
+    }
+    return render(request, 'edit_book', context)
