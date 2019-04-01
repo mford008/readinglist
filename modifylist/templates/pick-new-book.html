@@ -2,5 +2,11 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static styles_dashboard.css %}" />
 {% block content %}
-  <h1>Hello World</h1>
+<div class="Container">
+  {% if user_on_page == request_user %}
+    <h2 class="PageHeader">Pick a New Book</h2>
+  {% else %}
+    <p class="ErrorMessage">Oops! You're not logged in. <a href="{% url 'login' %}">Login</a> or <a href="{% url 'signup' %}">Signup.</a></p>
+  {% endif %}
+</div>
 {% endblock content %}

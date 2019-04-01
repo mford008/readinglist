@@ -124,9 +124,11 @@ def dashboard(request, username):
 def pick_new_book(request, username):
     user = User.objects.get(username=username)
     context = {
-        'user_on_page': user
+        'user_on_page': user,
+        'request_user': request.user,
     }
     return render(request, 'pick-new-book.html', context)
+
 
 def delete_book(request, book_id):
     book = Book.objects.get(id=book_id)
