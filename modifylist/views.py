@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, logout
 from django.contrib import auth
 
 from .models import Book
-# import requests
+import requests
 from django.conf import settings
 # import pprint
 API_KEY = str(settings.GOOGLE_BOOKS_API_KEY)
@@ -123,9 +123,21 @@ def dashboard(request, username):
 
 def pick_new_book(request, username):
     user = User.objects.get(username=username)
+    if 'title' in request.GET:
+        form = BookForm(request.GET)
+        if form.is_valid():
+            searchterm = form.cleaned_data['title']
+            apiKey = settings.GOOGLE_BOOKS_API_KEY
+            response = requests.get(f'https://www.googleapis.com/books/v1/volumes?q={searchterm}&key={apiKey}')
+            results = response.json()
+            print('worked!')
+            print(results)
+    else:
+        form = BookForm()
     context = {
         'user_on_page': user,
         'request_user': request.user,
+        'form': form,
     }
     return render(request, 'pick-new-book.html', context)
 
@@ -138,7 +150,7 @@ def delete_book(request, book_id):
 
 
 def edit_book(request, book_id, username):
-    user = User.objects.get(username=username)
+    # user = User.objects.get(username=username)
     book = Book.objects.get(id=book_id)
     if request.method == 'POST':
         form = EditBookForm(request.POST, instance=book)

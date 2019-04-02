@@ -5,6 +5,10 @@
 <div class="Container">
   {% if user_on_page == request_user %}
     <h2 class="PageHeader">Pick a New Book</h2>
+    <form action="{{ request.get_full_path }}" method="GET">
+      Title: <input type="text" name="title"><br>
+      <input type="submit" value="Submit">
+    </form>
   {% else %}
     <p class="ErrorMessage">Oops! You're not logged in. <a href="{% url 'login' %}">Login</a> or <a href="{% url 'signup' %}">Signup.</a></p>
   {% endif %}
