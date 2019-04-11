@@ -149,14 +149,14 @@ def delete_book(request, book_id):
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
-def edit_book(request, book_id, username):
+def edit_book(request, book_id):
     # user = User.objects.get(username=username)
     book = Book.objects.get(id=book_id)
     if request.method == 'POST':
         form = EditBookForm(request.POST, instance=book)
         if form.is_valid():
             form.save()
-            return redirect('dashboard', username=username)
+            return redirect(request.META.get('HTTP_REFERER', '/'))
     else:
         form = EditBookForm(instance=book)
     context = {

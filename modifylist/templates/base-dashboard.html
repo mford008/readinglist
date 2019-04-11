@@ -27,8 +27,8 @@
                 <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
               </div>
             </div>
-            <button><a href="{% url 'pick_new_book' username=user.username%}">Pick a New Book</a></button>
-            <button><a href="{% url 'dashboard' username=user.username%}">Dashboard</a></button>
+            <button><a href="{% url 'pick_new_book' username=user.username %}">Pick a New Book</a></button>
+            <button><a href="{% url 'dashboard' username=user.username %}">Dashboard</a></button>
           {% endif %}
         </div>
     </nav>

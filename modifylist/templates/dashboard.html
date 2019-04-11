@@ -14,9 +14,10 @@
             <div class="BookInfo"><span class="TitleText">{{ book.title }},</span> {{ book.author }}</div>
             <div class="BookInfo"><span class="TitleText">{{ book.status }}</div>
             <div class="BookButtons">
-              <button class="Button DeleteButton"><a class="DeleteLink" href="/delete_book/{{ book.id }}">x</a></button>
-              <button class="Button EditButton"><a class="EditLink" href="/edit_book/{{ book.id }}">test</a></button>
-            </div>
+              <button class="Button" data-toggle="modal" data-target="#modal{{ book.id }}">Edit</button>
+              {% include "snippets/edit_book_modal.html" %}
+              <button class="Button DeleteButton"><a class="DeleteLink" href="/delete_book/{{ book.id }}">Delete</a></button>
+              </div>
           </div>
           {% endif %}
         {% endfor %}
