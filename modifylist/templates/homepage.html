@@ -7,8 +7,13 @@
     <p class="Subtitle">Your reading list digitized.</p>
   </div>
   <div class="ButtonContainer">
+    {% if user.is_authenticated %}
+    <h2>Welcome back, {{ user.username }}</h2>
+    <button class="Button"><a class="ButtonText" href="{% url 'dashboard' username=user.username %}">Dashboard</a></button>
+    {% else %}
     <button class="Button"><a class="ButtonText" href="{% url "signup" %}">Signup</a></button>
     <button class="Button"><a class="ButtonText" href="{% url "login" %}">Login</a></button>
+    {% endif %}
   </div>
 </div>
 {% endblock content %}

@@ -15,7 +15,7 @@
   </head>
   <body>
     <nav class="Navbar navbar navbar-expand-md">
-      <a class="NavbarBrand navbar-brand" href="/">BookStore</a>
+      <a class="NavbarBrand navbar-brand" href="{% url 'dashboard' username=user.username %}">BookStore</a>
         <div class="NavbarDropdown">
           {% if user.is_authenticated %}
             <div class="dropdown">
